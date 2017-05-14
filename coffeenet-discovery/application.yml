@@ -4,7 +4,7 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://coffeenet-discovery.synyx.coffee:8761/eureka/
+      defaultZone: http://coffeenet-discovery.coffeenet:8761/eureka/
     registerWithEureka: true
     fetchRegistry: false
   server:

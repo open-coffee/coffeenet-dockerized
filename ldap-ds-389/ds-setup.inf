@@ -1,8 +1,8 @@
 [General]
-FullMachineName= coffeenet-ldap.synyx.coffee
+FullMachineName= coffeenet-ldap.coffeenet
 SuiteSpotUserID= dirsrv
 SuiteSpotGroup= dirsrv
-AdminDomain= synyx.coffee
+AdminDomain= coffeenet
 ConfigDirectoryAdminID= admin
 ConfigDirectoryAdminPwd= admin
 

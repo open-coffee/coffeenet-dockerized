@@ -10,19 +10,19 @@ coffeenet:
       hostname: localhost
     client:
       service-url:
-        defaultZone: http://coffeenet-discovery.synyx.coffee:8761/eureka/
+        defaultZone: http://coffeenet-discovery.coffeenet:8761/eureka/
   logging:
     console:
       enabled: true
     gelf:
-      server: coffeenet-logging.synyx.coffee
+      server: coffeenet-logging.coffeenet
       enviroment: docker
 
 auth:
   development: true
   default-redirect-url: http://localhost:8081
   ldap:
-    url: ldap://coffeenet-ldap.synyx.coffee:389
+    url: ldap://coffeenet-ldap.coffeenet:389
     base: dc=synyx,dc=coffee
     userSearchBase: ou=People
     userSearchFilter: uid={0}

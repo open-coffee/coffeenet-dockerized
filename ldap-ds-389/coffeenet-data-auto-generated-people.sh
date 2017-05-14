@@ -8,14 +8,14 @@
 > coffeenet-data-auto-generated-people.ldif
 echo "username,password" > loadTestCredentials.csv;
 
-for i in {1..10000};
+for i in {1..10};
 do
 ldapUsers="# user
 dn: uid=user$i,ou=People,dc=synyx,dc=coffee
 givenName: user$i
 sn: user$i
 cn: user$i $i
-mail: user$i@synyx.coffee
+mail: user$icoffeenet
 uid: user$i
 userPassword: user$i
 objectClass: top

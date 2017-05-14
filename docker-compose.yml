@@ -4,22 +4,22 @@ services:
     build: ./coffeenet-discovery/
     ports:
       - "8761:8761"
-    hostname: coffeenet-discovery.synyx.coffee
+    hostname: coffeenet-discovery.coffeenet
 
   ldap:
     build: ./ldap-ds-389/
     ports:
       - "38900:389"
-    hostname: coffeenet-ldap.synyx.coffee
+    hostname: coffeenet-ldap.coffeenet
   auth:
     build: ./coffeenet-auth/
     ports:
       - "9999:9999"
-    hostname: coffeenet-auth.synyx.coffee
+    hostname: coffeenet-auth.coffeenet
     links:
-      - discovery:coffeenet-discovery.synyx.coffee
-      - ldap:coffeenet-ldap.synyx.coffee
-      - graylog:coffeenet-logging.synyx.coffee
+      - discovery:coffeenet-discovery.coffeenet
+      - ldap:coffeenet-ldap.coffeenet
+      - graylog:coffeenet-logging.coffeenet
     depends_on:
       - ldap
 
@@ -39,4 +39,4 @@ services:
       - elasticsearch
     ports:
       - "9000:9000"
-    hostname: coffeenet-logging.synyx.coffee
+    hostname: coffeenet-logging.coffeenet
