@@ -35,10 +35,10 @@ docker-compose up
 Or start a specific image
 
 ```
-docker-compose up $dockerService
+docker-compose up ${dockerService}
 ```
 
-Verfügbare Docker Services:
+Available Docker Services:
 * ldap
 * discovery
 * auth
