@@ -15,7 +15,7 @@ dn: uid=user$i,ou=People,dc=synyx,dc=coffee
 givenName: user$i
 sn: user$i
 cn: user$i $i
-mail: user$icoffeenet
+mail: user$i@coffeenet
 uid: user$i
 userPassword: user$i
 objectClass: top
