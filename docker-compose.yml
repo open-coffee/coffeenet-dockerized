@@ -1,7 +1,9 @@
 version: '2'
 services:
   discovery:
-    build: ./coffeenet-discovery/
+    image: coffeenet/coffeenet-discovery:latest
+    volumes:
+      - ./coffeenet-discovery/application.yml:/application.yml
     ports:
       - "8761:8761"
     hostname: coffeenet-discovery.coffeenet
@@ -12,7 +14,9 @@ services:
       - "38900:389"
     hostname: coffeenet-ldap.coffeenet
   auth:
-    build: ./coffeenet-auth/
+    image: coffeenet/coffeenet-auth:latest
+    volumes:
+      - ./coffeenet-auth/application.yml:/application.yml
     ports:
       - "9999:9999"
     hostname: coffeenet-auth.coffeenet
