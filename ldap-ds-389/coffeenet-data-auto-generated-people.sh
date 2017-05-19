@@ -11,7 +11,7 @@ echo "username,password" > loadTestCredentials.csv;
 for i in {1..10};
 do
 ldapUsers="# user
-dn: uid=user$i,ou=People,dc=synyx,dc=coffee
+dn: uid=user$i,ou=People,dc=coffeenet
 givenName: user$i
 sn: user$i
 cn: user$i $i

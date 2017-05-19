@@ -11,7 +11,7 @@ SlapdConfigForMC= Yes
 UseExistingMC= 0
 ServerPort= 9389
 ServerIdentifier= ldap
-Suffix= dc=synyx,dc=coffee
+Suffix= dc=coffeenet
 RootDN= cn=Directory Manager
 RootDNPwd= Iexeemah4ieb4M
 ds_bename=ldap

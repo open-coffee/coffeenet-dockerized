@@ -1,8 +1,8 @@
 FROM debian:jessie
-MAINTAINER synyx
+MAINTAINER Tobias Schneider
 
 ENV DS_PASSWORD Iexeemah4ieb4M
-ENV DS_BASE dc=synyx,dc=coffee
+ENV DS_BASE dc=coffeenet
 
 RUN apt-get update \
      && apt-get install -y 389-ds \

@@ -23,7 +23,7 @@ auth:
   default-redirect-url: http://localhost:8081
   ldap:
     url: ldap://coffeenet-ldap.coffeenet:389
-    base: dc=synyx,dc=coffee
+    base: dc=coffeenet
     userSearchBase: ou=People
     userSearchFilter: uid={0}
     groupSearchBase: ou=Groups

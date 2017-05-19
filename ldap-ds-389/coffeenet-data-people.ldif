@@ -1,12 +1,12 @@
 version:1
 
-dn: ou=People,dc=synyx,dc=coffee
+dn: ou=People,dc=coffeenet
 objectClass: organizationalUnit
 objectClass: top
 ou: People
 
 # user
-dn: uid=admin,ou=People,dc=synyx,dc=coffee
+dn: uid=admin,ou=People,dc=coffeenet
 givenName: admin
 sn: admin
 cn: admin
@@ -19,7 +19,7 @@ objectClass: person
 objectClass: coffeeNetUser
 
 # user
-dn: uid=user,ou=People,dc=synyx,dc=coffee
+dn: uid=user,ou=People,dc=coffeenet
 givenName: user
 sn: user
 cn: user

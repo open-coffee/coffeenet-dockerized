@@ -1,5 +1,5 @@
 # user
-dn: uid=user1,ou=People,dc=synyx,dc=coffee
+dn: uid=user1,ou=People,dc=coffeenet
 givenName: user1
 sn: user1
 cn: user1 1
@@ -12,7 +12,7 @@ objectClass: person
 objectClass: coffeeNetUser
 
 # user
-dn: uid=user2,ou=People,dc=synyx,dc=coffee
+dn: uid=user2,ou=People,dc=coffeenet
 givenName: user2
 sn: user2
 cn: user2 2
@@ -25,7 +25,7 @@ objectClass: person
 objectClass: coffeeNetUser
 
 # user
-dn: uid=user3,ou=People,dc=synyx,dc=coffee
+dn: uid=user3,ou=People,dc=coffeenet
 givenName: user3
 sn: user3
 cn: user3 3
@@ -38,7 +38,7 @@ objectClass: person
 objectClass: coffeeNetUser
 
 # user
-dn: uid=user4,ou=People,dc=synyx,dc=coffee
+dn: uid=user4,ou=People,dc=coffeenet
 givenName: user4
 sn: user4
 cn: user4 4
@@ -51,7 +51,7 @@ objectClass: person
 objectClass: coffeeNetUser
 
 # user
-dn: uid=user5,ou=People,dc=synyx,dc=coffee
+dn: uid=user5,ou=People,dc=coffeenet
 givenName: user5
 sn: user5
 cn: user5 5
@@ -64,7 +64,7 @@ objectClass: person
 objectClass: coffeeNetUser
 
 # user
-dn: uid=user6,ou=People,dc=synyx,dc=coffee
+dn: uid=user6,ou=People,dc=coffeenet
 givenName: user6
 sn: user6
 cn: user6 6
@@ -77,7 +77,7 @@ objectClass: person
 objectClass: coffeeNetUser
 
 # user
-dn: uid=user7,ou=People,dc=synyx,dc=coffee
+dn: uid=user7,ou=People,dc=coffeenet
 givenName: user7
 sn: user7
 cn: user7 7
@@ -90,7 +90,7 @@ objectClass: person
 objectClass: coffeeNetUser
 
 # user
-dn: uid=user8,ou=People,dc=synyx,dc=coffee
+dn: uid=user8,ou=People,dc=coffeenet
 givenName: user8
 sn: user8
 cn: user8 8
@@ -103,7 +103,7 @@ objectClass: person
 objectClass: coffeeNetUser
 
 # user
-dn: uid=user9,ou=People,dc=synyx,dc=coffee
+dn: uid=user9,ou=People,dc=coffeenet
 givenName: user9
 sn: user9
 cn: user9 9
@@ -116,7 +116,7 @@ objectClass: person
 objectClass: coffeeNetUser
 
 # user
-dn: uid=user10,ou=People,dc=synyx,dc=coffee
+dn: uid=user10,ou=People,dc=coffeenet
 givenName: user10
 sn: user10
 cn: user10 10
