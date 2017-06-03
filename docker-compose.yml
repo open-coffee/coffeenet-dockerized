@@ -43,4 +43,5 @@ services:
       - elasticsearch
     ports:
       - "9000:9000"
+      - "12201/udp:12201/udp"
     hostname: coffeenet-logging.coffeenet
