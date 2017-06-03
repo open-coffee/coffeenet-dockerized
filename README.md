@@ -11,8 +11,8 @@ You will have a fully integrated CoffeeNet environment with the following users:
 
 | User | Username | Password | Roles |
 |---|---|---|---|
-| admin | admin | admin | ROLE_COFFEENET-ADMIN & ROLE_USER |
-| user | user | user | ROLE_USER |
+| admin | admin | admin | COFFEENET-ADMIN & USER |
+| user | user | user | USER |
 
 and 2000 users for load tests e.g. with the credentials user{1..2000}/user{1..2000} 
 (e.g. user1/user1, user2/user2,...) without a role defined.
