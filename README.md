@@ -5,6 +5,7 @@ When you run the docker-compose.yml file as describes below these services will 
 * CoffeeNet Auth (http://localhost:9999)
 * Coffeenet Discovery (http://localhost:8761)
 * Ldap Server (ds-389) (ldap://localhost:38900)
+* MariaDb (mariadb://localhost:[3306,3308]/auth - auth/auth)
 * Graylog (http://localhost:9000 - admin/admin)
 
 You will have a fully integrated CoffeeNet environment with the following users:

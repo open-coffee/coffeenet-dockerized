@@ -8,11 +8,6 @@ services:
       - "8761:8761"
     hostname: coffeenet-discovery.coffeenet
 
-  ldap:
-    build: ./ldap-ds-389/
-    ports:
-      - "38900:389"
-    hostname: coffeenet-ldap.coffeenet
   auth:
     image: coffeenet/coffeenet-auth:latest
     volumes:
@@ -24,8 +19,20 @@ services:
       - discovery:coffeenet-discovery.coffeenet
       - ldap:coffeenet-ldap.coffeenet
       - graylog:coffeenet-logging.coffeenet
+      - mariadb:mariadb.coffeenet
     depends_on:
       - ldap
+      - mariadb
+  ldap:
+    build: ./ldap-ds-389/
+    ports:
+      - "38900:389"
+    hostname: coffeenet-ldap.coffeenet
+  mariadb:
+    build: ./mariadb/
+    ports:
+      - '3308:3306'
+    hostname: mariadb.coffeenet
 
   mongo:
     image: "mongo:3"
@@ -33,7 +40,7 @@ services:
     image: "elasticsearch:2"
     command: "elasticsearch -Des.cluster.name='graylog'"
   graylog:
-    image: graylog2/server:2.2.1-1
+    image: graylog2/server:2.2.3-1
     environment:
       GRAYLOG_PASSWORD_SECRET: somepasswordpepper
       GRAYLOG_ROOT_PASSWORD_SHA2: 8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
