@@ -4,6 +4,7 @@ With the provided docker-compose file you can test the auth server with its need
 When you run the docker-compose.yml file as describes below these services will be started:
 * CoffeeNet Auth (http://localhost:9999)
 * Coffeenet Discovery (http://localhost:8761)
+* Coffeenet Config Server (http://localhost:8888)
 * Ldap Server (ds-389) (ldap://localhost:38900)
 * MariaDb (mariadb://localhost:[3306,3308]/auth - auth/auth)
 * Graylog (http://localhost:9000 - admin/admin)
@@ -38,12 +39,6 @@ Or start a specific image
 ```
 docker-compose up ${dockerService}
 ```
-
-Available Docker Services:
-* ldap
-* discovery
-* auth
-* graylog
 
 # LDAP browser/editor
 
