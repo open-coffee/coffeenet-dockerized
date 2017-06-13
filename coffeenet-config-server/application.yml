@@ -1,0 +1,20 @@
+server:
+  port: 8888
+
+coffeenet:
+  application-name: 'CoffeeNet Config Server'
+  profile: integration
+  logging:
+    console:
+      enabled: true
+
+spring:
+  profiles:
+    active: git
+  cloud:
+    config:
+      server:
+        git:
+          uri: file:./configs
+          clone-on-start: true
+          search-paths: '{application}/{profile}'

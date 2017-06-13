@@ -1,5 +1,14 @@
 version: '2'
 services:
+  config-server:
+    image: coffeenet/coffeenet-config-server:latest
+    volumes:
+      - ./coffeenet-config-server/application.yml:/application.yml
+      - ./configs:/configs
+    ports:
+      - '8888:8888'
+    hostname: coffeenet-config-server.coffeenet
+
   discovery:
     image: coffeenet/coffeenet-discovery:latest
     volumes:
