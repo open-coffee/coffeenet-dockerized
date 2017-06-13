@@ -5,7 +5,7 @@ services:
     volumes:
       - ./coffeenet-discovery/application.yml:/application.yml
     ports:
-      - "8761:8761"
+      - '8761:8761'
     hostname: coffeenet-discovery.coffeenet
 
   auth:
@@ -13,7 +13,7 @@ services:
     volumes:
       - ./coffeenet-auth/application.yml:/application.yml
     ports:
-      - "9999:9999"
+      - '9999:9999'
     hostname: coffeenet-auth.coffeenet
     links:
       - discovery:coffeenet-discovery.coffeenet
@@ -26,7 +26,7 @@ services:
   ldap:
     build: ./ldap-ds-389/
     ports:
-      - "38900:389"
+      - '38900:389'
     hostname: coffeenet-ldap.coffeenet
   mariadb:
     build: ./mariadb/
@@ -35,10 +35,10 @@ services:
     hostname: mariadb.coffeenet
 
   mongo:
-    image: "mongo:3"
+    image: 'mongo:3'
   elasticsearch:
-    image: "elasticsearch:2"
-    command: "elasticsearch -Des.cluster.name='graylog'"
+    image: 'elasticsearch:2'
+    command: 'elasticsearch -Des.cluster.name="graylog"'
   graylog:
     image: graylog2/server:2.2.3-1
     environment:
@@ -49,6 +49,6 @@ services:
       - mongo
       - elasticsearch
     ports:
-      - "9000:9000"
-      - "12201/udp:12201/udp"
+      - '9000:9000'
+      - '12201/udp:12201/udp'
     hostname: coffeenet-logging.coffeenet
