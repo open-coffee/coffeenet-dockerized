@@ -15,6 +15,6 @@ spring:
     config:
       server:
         git:
-          uri: file:./configs
+          uri: file:./coffeenet-config-server/configs
           clone-on-start: true
           search-paths: '{application}/{profile}'

@@ -1,0 +1,13 @@
+server:
+  port: 8081
+
+coffeenet:
+  application-name: Linksammlung
+  profile: integration
+  security:
+    client:
+      client-id: coffeeNetClient
+      client-secret: coffeeNetClientSecret
+  logging:
+    console:
+      enabled: true
