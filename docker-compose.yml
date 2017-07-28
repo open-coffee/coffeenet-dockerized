@@ -4,7 +4,7 @@ services:
     image: coffeenet/coffeenet-config-server:latest
     volumes:
       - ./coffeenet-config-server/application.yml:/application.yml
-      - ./configs:/configs
+      - ./coffeenet-config-server/configs:/configs
     ports:
       - '8888:8888'
     hostname: coffeenet-config-server.coffeenet
