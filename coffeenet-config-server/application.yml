@@ -4,6 +4,8 @@ server:
 coffeenet:
   application-name: 'CoffeeNet Config Server'
   profile: integration
+  security:
+    enabled: false
   logging:
     console:
       enabled: true
