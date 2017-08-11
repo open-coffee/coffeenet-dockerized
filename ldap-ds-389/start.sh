@@ -1,16 +1,16 @@
 #!/bin/bash
-setup-ds-admin -s -f /tmp/ds-setup.inf 
+setup-ds-admin -s -f /opt/ds-setup.inf
 #schema cannot be added via ldapadd -> put it in the schema folder of the conf-dir
-cp /tmp/coffeenet-schema.ldif /etc/dirsrv/slapd-ldap/schema/98coffeenet.ldif
+cp /opt/coffeenet-schema.ldif /etc/dirsrv/slapd-ldap/schema/98coffeenet.ldif
 
 /usr/sbin/ns-slapd -D /etc/dirsrv/slapd-ldap -d 16384 &
 LDAP_PID=$!
 sleep 5
 
 # dump data
-ldapadd -D "cn=Directory Manager" -w $DS_PASSWORD -h localhost -p 9389 -f /tmp/coffeenet-data-people.ldif -c
-ldapadd -D "cn=Directory Manager" -w $DS_PASSWORD -h localhost -p 9389 -f /tmp/coffeenet-data-auto-generated-people.ldif -c
-ldapadd -D "cn=Directory Manager" -w $DS_PASSWORD -h localhost -p 9389 -f /tmp/coffeenet-data-roles.ldif -c
+ldapadd -D "cn=Directory Manager" -w $DS_PASSWORD -h localhost -p 9389 -f /opt/coffeenet-data-people.ldif -c
+ldapadd -D "cn=Directory Manager" -w $DS_PASSWORD -h localhost -p 9389 -f /opt/coffeenet-data-auto-generated-people.ldif -c
+ldapadd -D "cn=Directory Manager" -w $DS_PASSWORD -h localhost -p 9389 -f /opt/coffeenet-data-roles.ldif -c
 
 # Switch port
 ldapmodify -D "cn=Directory Manager" -w $DS_PASSWORD -h localhost -p 9389 <<EOS

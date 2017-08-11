@@ -14,10 +14,10 @@ ADD ds-setup.inf \
     coffeenet-data-auto-generated-people.ldif \
     coffeenet-data-roles.ldif \
     start.sh \
-    /tmp/
+    /opt/
 
-RUN chmod +x /tmp/start.sh
+RUN chmod +x /opt/start.sh
 
 EXPOSE 389
 
-CMD /tmp/start.sh
+CMD /opt/start.sh
