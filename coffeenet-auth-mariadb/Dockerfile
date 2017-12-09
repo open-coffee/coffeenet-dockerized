@@ -1,4 +1,4 @@
-FROM mariadb:10.3
+FROM mariadb:10.3.2
 MAINTAINER Tobias Schneider <Tobias.Schneider@synyx.de>
 
 ENV MYSQL_USER=auth \

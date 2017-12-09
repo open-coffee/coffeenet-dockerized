@@ -38,7 +38,7 @@ services:
       - '38900:389'
     hostname: coffeenet-ldap.coffeenet
   mariadb:
-    build: ./mariadb/
+    build: coffeenet-auth-mariadb/
     ports:
       - '3308:3306'
     hostname: mariadb.coffeenet
