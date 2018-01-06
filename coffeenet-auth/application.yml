@@ -20,7 +20,7 @@ coffeenet:
 
 auth:
   development: true
-  default-redirect-url: http://localhost:8081
+  default-redirect-url: http://localhost:9999/clients
   ldap:
     url: ldap://coffeenet-ldap.coffeenet:389
     base: dc=coffeenet
