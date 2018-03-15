@@ -6,9 +6,21 @@ coffeenet:
   profile: integration
   security:
     enabled: false
+  discovery:
+    instance:
+      home-page-url: http://localhost:8888
+      hostname: localhost
+    client:
+      service-url:
+        defaultZone: http://coffeenet-discovery.coffeenet:8761/eureka/
   logging:
     console:
       enabled: true
+
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://coffeenet-auth.coffeenet:9999/user
 
 spring:
   profiles:
@@ -17,6 +29,6 @@ spring:
     config:
       server:
         git:
-          uri: file:./coffeenet-config-server/configs
+          uri: file:/configs
           clone-on-start: true
           search-paths: '{application}/{profile}'

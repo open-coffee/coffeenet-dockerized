@@ -38,7 +38,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mariadb://mariadb.coffeenet:3306/auth
+    url: jdbc:mariadb://auth-mariadb.coffeenet:3306/auth
     username: auth
     password: auth
     driver-class-name: org.mariadb.jdbc.Driver

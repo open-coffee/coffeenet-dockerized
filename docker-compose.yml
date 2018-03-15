@@ -1,24 +1,45 @@
-version: '2'
+version: '2.3'
 services:
   config-server:
     image: coffeenet/coffeenet-config-server:latest
+    container_name: coffeenet-config-server
     volumes:
       - ./coffeenet-config-server/application.yml:/application.yml
       - ./coffeenet-config-server/configs:/configs
     ports:
       - '8888:8888'
     hostname: coffeenet-config-server.coffeenet
+    links:
+      - discovery:coffeenet-discovery.coffeenet
+      - auth:coffeenet-auth.coffeenet
+    depends_on:
+      auth:
+        condition: service_healthy
+      discovery:
+        condition: service_started
+    healthcheck:
+       test: ["CMD", "curl", "-f", "http://localhost:8888/health"]
+       interval: 10s
+       timeout: 3s
+       retries: 5
 
   discovery:
     image: coffeenet/coffeenet-discovery:latest
+    container_name: coffeenet-discovery
     volumes:
       - ./coffeenet-discovery/application.yml:/application.yml
     ports:
       - '8761:8761'
     hostname: coffeenet-discovery.coffeenet
+    healthcheck:
+       test: ["CMD", "curl", "-f", "http://localhost:8761/health"]
+       interval: 10s
+       timeout: 3s
+       retries: 5
 
   auth:
     image: coffeenet/coffeenet-auth:latest
+    container_name: coffeenet-auth
     volumes:
       - ./coffeenet-auth/application.yml:/application.yml
     ports:
@@ -27,26 +48,43 @@ services:
     links:
       - discovery:coffeenet-discovery.coffeenet
       - ldap:coffeenet-ldap.coffeenet
-      - graylog:coffeenet-logging.coffeenet
-      - mariadb:mariadb.coffeenet
+      - auth-mariadb:auth-mariadb.coffeenet
     depends_on:
-      - ldap
-      - mariadb
+      auth-mariadb:
+        condition: service_healthy
+      ldap:
+        condition: service_started
+    healthcheck:
+       test: ["CMD", "curl", "-f", "http://localhost:9999/login"]
+       interval: 10s
+       timeout: 3s
+       retries: 5
+
+  auth-mariadb:
+    build: coffeenet-auth-mariadb/
+    container_name: coffeenet-auth-mariadb
+    ports:
+      - '3308:3306'
+    hostname: auth-mariadb.coffeenet
+    healthcheck:
+      test: "/usr/bin/mysql --user=auth --password=auth --execute \"SHOW DATABASES;\""
+      interval: 3s
+      timeout: 1s
+      retries: 5
+
   ldap:
     build: ./ldap-ds-389/
+    container_name: coffeenet-ldap
     ports:
       - '38900:389'
     hostname: coffeenet-ldap.coffeenet
-  mariadb:
-    build: coffeenet-auth-mariadb/
-    ports:
-      - '3308:3306'
-    hostname: mariadb.coffeenet
 
   mongodb:
     image: 'mongo:3'
+    container_name: coffeenet-graylog-mongodb
   elasticsearch:
     image: 'docker.elastic.co/elasticsearch/elasticsearch:5.5.1'
+    container_name: coffeenet-graylog-elasticsearch
     environment:
       - http.host=0.0.0.0
       - transport.host=localhost
@@ -59,9 +97,9 @@ services:
         soft: -1
         hard: -1
     mem_limit: 1g
-  # Graylog: https://hub.docker.com/r/graylog/graylog/
   graylog:
     image: 'graylog/graylog:2.3.0-1'
+    container_name: coffeenet-graylog
     environment:
       # CHANGE ME!
       - GRAYLOG_PASSWORD_SECRET=somepasswordpepper

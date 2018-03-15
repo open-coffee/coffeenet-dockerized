@@ -3,10 +3,10 @@
 With the provided docker-compose file you can test the auth server with its needed services very easy.
 When you run the docker-compose.yml file as describes below these services will be started:
 * CoffeeNet Auth (http://localhost:9999)
+  * MariaDB (mariadb://localhost:3398/auth - auth/auth)
+  * Ldap (ldap://localhost:38900)
 * Coffeenet Discovery (http://localhost:8761)
 * Coffeenet Config Server (http://localhost:8888)
-* Ldap Server (ds-389) (ldap://localhost:38900)
-* MariaDb (mariadb://localhost:[3306,3308]/auth - auth/auth)
 * Graylog (http://localhost:9000 - admin/admin)
 
 You will have a fully integrated CoffeeNet environment with the following users:
@@ -53,4 +53,4 @@ brew install Caskroom/cask/apache-directory-studio
 
 ### Linux
 
-Download and start the Apache Directory Manager from http://directory.apache.org/studio/download/download-linux.html
+Download and start the [Apache Directory Manager](http://directory.apache.org/studio/download/download-linux.html)
