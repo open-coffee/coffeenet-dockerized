@@ -24,11 +24,9 @@ security:
 
 spring:
   profiles:
-    active: git
+    active: native
   cloud:
     config:
       server:
-        git:
-          uri: file:/configs
-          clone-on-start: true
-          search-paths: '{application}/{profile}'
+        native:
+          search-locations: 'file:/configs/{application}/{profile}'
