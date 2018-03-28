@@ -20,6 +20,9 @@ and 2000 users for load tests e.g. with the credentials user{1..2000}/user{1..20
 (e.g. user1/user1, user2/user2,...) without a role defined.
 
 
+![CoffeeNetArchitecture][architecture]
+
+
 # Usage with docker-compose
 
 Build the image:
@@ -54,3 +57,6 @@ brew install Caskroom/cask/apache-directory-studio
 ### Linux
 
 Download and start the [Apache Directory Manager](http://directory.apache.org/studio/download/download-linux.html)
+
+
+[architecture]: architecture.png "CoffeeNet Architecture"
