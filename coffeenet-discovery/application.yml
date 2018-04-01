@@ -2,6 +2,8 @@ server:
   port: 8761
 
 eureka:
+  environment: docker
+  datacenter: docker
   server:
     waitTimeInMsWhenSyncEmpty: 0
 
