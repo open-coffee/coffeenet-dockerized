@@ -3,12 +3,14 @@ server:
 
 coffeenet:
   application-name: 'CoffeeNet Config Server'
+  allowed-authorities: ROLE_COFFEENET-ADMIN
   profile: integration
   security:
     enabled: false
   discovery:
     instance:
       home-page-url: http://localhost:8888
+      non-secure-port: 8888
       hostname: localhost
     client:
       service-url:
@@ -16,6 +18,13 @@ coffeenet:
   logging:
     console:
       enabled: true
+
+config-server:
+  resource:
+    id: 'config'
+  keystore:
+    enabled: true
+    public-key: 'file:coffeenet-public.cert'
 
 security:
   oauth2:

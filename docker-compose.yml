@@ -1,26 +1,59 @@
-version: '2.3'
+version: '2.4'
 services:
+  frontpage:
+    image: coffeenet/coffeenet-frontpage:latest
+    container_name: coffeenet-frontpage
+    volumes:
+      - ./coffeenet-frontpage/bootstrap.yml:/bootstrap.yml
+    ports:
+      - '8081:8080'
+    hostname: coffeenet-frontpage.coffeenet
+    links:
+      - auth:coffeenet-auth.coffeenet
+      - config-server:coffeenet-config-server.coffeenet
+      - discovery:coffeenet-discovery.coffeenet
+      - frontpage-mongodb:coffeenet-frontpage-mongodb.coffeenet
+    depends_on:
+      frontpage-mongodb:
+        condition: service_healthy
+      config-server:
+        condition: service_healthy
+
+  frontpage-mongodb:
+    image: mongo:latest
+    container_name: coffeenet-frontpage-mongodb
+    ports:
+      - '27019:27017'
+    hostname: coffeenet-frontpage-mongodb.coffeenet
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: frontpage
+      MONGO_INITDB_ROOT_PASSWORD: frontpage
+    healthcheck:
+      test: echo 'db.stats().ok' | mongo localhost:27017/admin --quiet
+      interval: 3s
+      timeout: 3s
+      retries: 10
+
   config-server:
     image: coffeenet/coffeenet-config-server:latest
     container_name: coffeenet-config-server
     volumes:
       - ./coffeenet-config-server/application.yml:/application.yml
+      - ./coffeenet-config-server/coffeenet-public.cert:/coffeenet-public.cert
       - ./coffeenet-config-server/configs:/configs
     ports:
       - '8888:8888'
     hostname: coffeenet-config-server.coffeenet
     links:
-      - discovery:coffeenet-discovery.coffeenet
       - auth:coffeenet-auth.coffeenet
+      - discovery:coffeenet-discovery.coffeenet
     depends_on:
       auth:
         condition: service_healthy
-      discovery:
-        condition: service_started
     healthcheck:
        test: ["CMD", "curl", "-f", "http://localhost:8888/health"]
-       interval: 10s
-       timeout: 3s
+       interval: 30s
+       timeout: 30s
        retries: 5
 
   discovery:
@@ -33,8 +66,8 @@ services:
     hostname: coffeenet-discovery.coffeenet
     healthcheck:
        test: ["CMD", "curl", "-f", "http://localhost:8761/health"]
-       interval: 10s
-       timeout: 3s
+       interval: 30s
+       timeout: 30s
        retries: 5
 
   auth:
@@ -42,13 +75,14 @@ services:
     container_name: coffeenet-auth
     volumes:
       - ./coffeenet-auth/application.yml:/application.yml
+      - ./coffeenet-auth/coffeenet.jks:/coffeenet.jks
     ports:
       - '9999:9999'
     hostname: coffeenet-auth.coffeenet
     links:
+      - auth-mariadb:auth-mariadb.coffeenet
       - discovery:coffeenet-discovery.coffeenet
       - ldap:coffeenet-ldap.coffeenet
-      - auth-mariadb:auth-mariadb.coffeenet
     depends_on:
       auth-mariadb:
         condition: service_healthy
@@ -56,8 +90,8 @@ services:
         condition: service_started
     healthcheck:
        test: ["CMD", "curl", "-f", "http://localhost:9999/login"]
-       interval: 10s
-       timeout: 3s
+       interval: 30s
+       timeout: 30s
        retries: 5
 
   auth-mariadb:
@@ -79,11 +113,13 @@ services:
       - '38900:389'
     hostname: coffeenet-ldap.coffeenet
 
+
+  # Graylog Stack
   mongodb:
     image: 'mongo:3'
     container_name: coffeenet-graylog-mongodb
   elasticsearch:
-    image: 'docker.elastic.co/elasticsearch/elasticsearch:5.5.1'
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.3
     container_name: coffeenet-graylog-elasticsearch
     environment:
       - http.host=0.0.0.0
@@ -98,7 +134,7 @@ services:
         hard: -1
     mem_limit: 1g
   graylog:
-    image: 'graylog/graylog:2.3.0-1'
+    image: 'graylog/graylog:2.4.0-1'
     container_name: coffeenet-graylog
     environment:
       # CHANGE ME!

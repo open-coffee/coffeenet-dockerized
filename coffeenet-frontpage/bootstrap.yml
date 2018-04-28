@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: frontpage
+  profiles:
+    active: docker
+  cloud:
+    config:
+      uri: http://coffeenet-config-server.coffeenet:8888
+      client:
+        oauth2:
+          client-id: coffeeNetClient
+          client-secret: coffeeNetClientSecret
+          access-token-uri: http://coffeenet-auth.coffeenet
+          scope: openid
