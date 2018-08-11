@@ -77,4 +77,4 @@ brew install Caskroom/cask/apache-directory-studio
 Download and start the [Apache Directory Manager](http://directory.apache.org/studio/download/download-linux.html)
 
 
-[architecture]: architecture.png "CoffeeNet Architecture"
+[architecture]: architecture-frontpage.png "CoffeeNet Architecture"
