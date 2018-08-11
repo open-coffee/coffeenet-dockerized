@@ -8,6 +8,7 @@ coffeenet:
     instance:
       home-page-url: http://localhost:9999/clients
       hostname: localhost
+      non-secure-port: 9999
     client:
       service-url:
         defaultZone: http://coffeenet-discovery.coffeenet:8761/eureka/
@@ -19,8 +20,8 @@ coffeenet:
       enviroment: docker
 
 auth:
-  development: true
-  default-redirect-url: http://localhost:9999/clients
+  development: false
+  default-redirect-url: http://localhost:8081
   ldap:
     url: ldap://coffeenet-ldap.coffeenet:389
     base: dc=coffeenet
@@ -29,6 +30,11 @@ auth:
     groupSearchBase: ou=Groups
     groupSearchFilter: member={0}
     connection-with-tls: false
+  keystore:
+    enabled: true
+    jks-password: oov5eeWohcoo
+    jks-alias: 'coffeenet'
+    jks-path: 'file:coffeenet.jks'
 
 server:
   port: 9999

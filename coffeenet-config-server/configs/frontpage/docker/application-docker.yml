@@ -1,0 +1,31 @@
+coffeenet:
+  application-name: Startseite
+  profile: integration
+  security:
+    client:
+      client-id: coffeeNetClient
+      client-secret: coffeeNetClientSecret
+  discovery:
+    instance:
+      home-page-url: http://coffeenet-frontpage.coffeenet:8080
+      hostname: localhost
+      non-secure-port: '8080'
+    client:
+      service-url:
+        defaultZone: http://coffeenet-discovery.coffeenet:8761/eureka/
+  logging:
+    console:
+      enabled: true
+    gelf:
+      server: coffeenet-logging.coffeenet
+      enviroment: docker
+
+spring:
+  data:
+    mongodb:
+      host: coffeenet-frontpage-mongodb.coffeenet
+      port: 27017
+      username: frontpage
+      password: frontpage
+      authentication-database: admin
+      database: frontpage
