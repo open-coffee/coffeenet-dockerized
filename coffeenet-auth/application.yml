@@ -20,7 +20,7 @@ coffeenet:
       enviroment: docker
 
 auth:
-  development: false
+  development: true
   default-redirect-url: http://localhost:8081
   ldap:
     url: ldap://coffeenet-ldap.coffeenet:389
