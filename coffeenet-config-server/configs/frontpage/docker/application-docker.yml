@@ -5,6 +5,11 @@ coffeenet:
     client:
       client-id: coffeeNetClient
       client-secret: coffeeNetClientSecret
+      access-token-uri: http://coffeenet-auth.coffeenet:9999/oauth/token
+      user-authorization-uri: http://localhost:9999/oauth/authorize
+    logout-success-url: http://localhost:9999/logout
+    resource:
+      user-info-uri: http://coffeenet-auth.coffeenet:9999/user
   discovery:
     instance:
       home-page-url: http://localhost:8081
