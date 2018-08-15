@@ -10,5 +10,5 @@ spring:
         oauth2:
           client-id: coffeeNetClient
           client-secret: coffeeNetClientSecret
-          access-token-uri: http://coffeenet-auth.coffeenet
+          access-token-uri: http://coffeenet-auth.coffeenet:9999/oauth/token
           scope: openid
