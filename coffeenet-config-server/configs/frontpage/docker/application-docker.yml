@@ -7,9 +7,9 @@ coffeenet:
       client-secret: coffeeNetClientSecret
   discovery:
     instance:
-      home-page-url: http://coffeenet-frontpage.coffeenet:8080
+      home-page-url: http://localhost:8081
       hostname: localhost
-      non-secure-port: '8080'
+      non-secure-port: '8081'
     client:
       service-url:
         defaultZone: http://coffeenet-discovery.coffeenet:8761/eureka/
