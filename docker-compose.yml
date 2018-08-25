@@ -94,7 +94,7 @@ services:
       ldap:
         condition: service_started
     healthcheck:
-       test: ["CMD", "curl", "-f", "http://localhost:9999/login"]
+       test: ["CMD", "curl", "-f", "http://localhost:9999/health"]
        interval: 30s
        timeout: 30s
        retries: 5
