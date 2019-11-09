@@ -1,0 +1,48 @@
+version:1
+
+dn: ou=People,dc=example,dc=org
+objectClass: organizationalUnit
+objectClass: top
+ou: People
+
+# user
+dn: uid=admin,ou=People,dc=example,dc=org
+givenName: admin
+sn: admin
+cn: admin
+mail: admin@coffeenet
+uid: admin
+userPassword: admin
+objectClass: top
+objectClass: inetorgperson
+objectClass: person
+
+# user
+dn: uid=user,ou=People,dc=example,dc=org
+givenName: user
+sn: user
+cn: user
+mail: user@coffeenet
+uid: spencer
+userPassword: user
+objectClass: top
+objectClass: inetorgperson
+objectClass: person
+
+dn: ou=Groups,dc=example,dc=org
+objectClass: organizationalUnit
+objectClass: top
+ou: Groups
+
+dn: cn=USER,ou=Groups,dc=example,dc=org
+objectClass: top
+objectClass: groupOfNames
+cn: USER
+member: uid=admin,ou=People,dc=example,dc=org
+member: uid=user,ou=People,dc=example,dc=org
+
+dn: cn=COFFEENET-ADMIN,ou=Groups,dc=example,dc=org
+objectClass: top
+objectClass: groupOfNames
+cn: COFFEENET-ADMIN
+member: uid=admin,ou=People,dc=example,dc=org
